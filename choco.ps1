@@ -1,23 +1,27 @@
-# Requires -RunAsAdministrator
+Start-Transcript -Path choco.log -UseMinimalHeader
 
-Set-ExecutionPolicy Bypass -Scope Process -Force
+# Save the current execution policy...
+$currPolicy = Get-ExecutionPolicy
 
-# install chocolatey if not installed
+# Temporarily set the policy to 'Bypass' for this process.
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 
+# Install Chocolatey if not installed
 if (!(Test-Path -Path "$env:ProgramData\Chocolatey")) {
   Invoke-Expression((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
-# prompt for confirmation in scripts or bypass
+# Fixes autocomplete error if no profile was found while installing chocolatey.
+Import-Module “$env:ChocolateyInstall\helpers\chocolateyProfile.psm1” -Force
 
+# Bypass package confirmation prompt
 choco feature enable -n=allowGlobalConfirmation
 
-# for each package in the list run install
-Get-Content ".\packages" | ForEach-Object{($_ -split "\r\n")[0]} | ForEach-Object{choco install -y $_}
+# For each package in the list run install
+Get-Content ".\$args" | ForEach-Object{($_ -split "\r\n")[0]} | ForEach-Object{choco install $_}
 
-# casio bell
+# Restore the previous execution policy for this process.
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy $currPolicy -Force
 
-while (1) {
-      1..2 | % { [console]::beep(3900, 225) }
-      Start-Sleep -Milliseconds 450
-      }
+# Stop
+Stop-Transcript

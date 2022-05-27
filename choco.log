@@ -1,0 +1,13 @@
+**********************
+PowerShell transcript start
+Start time: 20220324173235
+**********************
+Transcript started, output file is choco.log
+Nothing to change. Config already set.
+
+
+
+PS>TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."

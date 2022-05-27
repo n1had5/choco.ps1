@@ -1,0 +1,33 @@
+autohotkey
+psutils
+git
+wget
+everything
+firefox
+picotorrent
+foobar2000
+nicotine-plus
+lite-xl
+freeencoderpack
+autohotkey
+teracopy
+greenshot
+mpv
+shutup10
+alacritty
+yt-dlp
+sudo
+bottom
+qimgv
+eartrumpet
+powershell-core
+linkshellextension
+directx
+vcredist-all
+dotnetfx
+sumatrapdf
+nbfc
+python
+rufus
+notepadreplacer --params='"/NOTEPAD:C:\ProgramData\chocolatey\bin\lite-xl.exe"'
+--allow-empty-checksums --ignorechecksum microsoft-office-deployment --params="/Language:en-us /64bit /Product:ProPlus2021Volume /Exclude=Groove,Lync,OneNote,OneDrive,Teams,Access,Outlook,Publisher"
